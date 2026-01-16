@@ -9,99 +9,119 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: url("Background.png") no-repeat center center/cover;
 }
 
-    .container {
-      background: rgba(158, 86, 35, 0.35);
-      padding: 40px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 600px;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 25px rgba(189, 80, 56, 0.2));
-      animation: fadeIn 1s ease-out;
-    }
+.container {
+  background: rgba(143, 86, 45, 0.35);
+  width: 90%;
+  max-width: 600px;
+  min-height: 300px;
+  max-height: 90vh;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(1px);
+  padding: 2vw;
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center content vertically */
+  align-items: center;     /* center horizontally */
+  gap: 2vw;                /* spacing between question and button */
+  box-sizing: border-box;
+}
 
-    h2 {
-      margin-top: 0;
-      font-size: 32px;
-      font-weight: 600;
-      color: #fff
-    }
+h2 {
+  font-size: 5vw;
+  font-weight: 200;
+  color: #fff;
+  margin: 2vw 0 0;
+}
 
-    #question {
-      font-size: 26px;
-      margin: 30px 0;
-      font-weight: bold;
-      line-height: 1.4;
-      transition: opacity 0.5s ease;
-      min-height: 100px;
-      color: #fff
+#question {
+  font-size: 4.5vw;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.4;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 1vw 0;
+  text-align: center;
+}
 
-    }
+/* Centered button with fixed width */
+.btn {
+  background: #ffffff;
+  color: #333;
+  border: none;
+  border-radius: 30px;
+  padding: 2vw 10vw;       /* top/bottom and left/right */
+  font-size: 4vw;
+  cursor: pointer;
+  font-weight: 200;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+  width: auto;            /* button only as wide as content + padding */
+}
 
-    .btn {
-      background: #ffffff;
-      color: #333;
-      padding: 14px 30px;
-      border-radius: 30px;
-      font-size: 18px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
+.btn:active {
+  transform: scale(0.97); /* subtle press effect */
+}
 
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* Extremely small phones */
+@media (max-width: 350px) {
+  h2 { font-size: 6vw; }
+  #question { font-size: 5vw; }
+  .btn { font-size: 5vw; padding: 5vw 6vw; }
+}
   </style>
 </head>
 
 <body>
 
   <div class="container">
-    <h2>🎉 13th Anniversary Ice-Breaker 🎉</h2>
     <div id="question">Loading...</div>
     <button class="btn" onclick="generateQuestion()">Next Question</button>
   </div>
 
+  <h2>🎉 መልካም ገና | Merry Christmas🎉</h2>
+
 <script>
   const questions = [
-    "What’s one thing most people don’t know about your department?",
-    "What’s the most fun part of your job?",
-    "If your department was an animal, which one would it be and why?",
-    "What is your proudest achievement this year?",
-    "What’s a project you really enjoyed?",
-    "What do you want other departments to understand about your work?",
-    "If you could switch roles with someone for a day, who would it be?",
-    "What motivates you most at work?",
-    "Describe your team in one word.",
-    "What’s one skill you wish everyone had?",
-    "Share a funny or memorable moment from work."
+"What’s the most fun part of your day?",
+  "What’s a skill you already have but wish everyone had?",
+  "What do you enjoy the most in life?",
+  "What’s one thing about yourself you really like?",
+  "What’s your favorite way to relax after work?",
+  "What’s one thing that always makes you laugh?",
+  "If you could switch roles with someone for a day, who would it be?",
+  "What’s a hobby or activity you love doing?",
+  "What’s one small thing that makes your day better?",
+  "What’s a food or drink you can’t live without?",
+  "What’s your favorite way to spend a weekend?",
+  "What’s one thing you wish you could do more often?",
+  "Who is someone that always cheers you up?",
+  "If you could travel anywhere tomorrow, where would you go?",
+  "What’s one thing you’re grateful for today?",
+  "What’s the last thing that made you smile?",
+  "What’s a favorite memory from the past year?",
+  "If your mood today were a color, what would it be?",
+  "What’s one thing you do to treat yourself?",
+  "What’s one quirky habit you secretly enjoy?",
+  "Who is the sharpest dresser among the men tonight",
+  "Who is the style icon among the women tonight?",
+  "Who nailed their outfit today?"
   ];
 
   function generateQuestion() {
-    const questionBox = document.getElementById("question");
-    questionBox.style.opacity = 0;
-
-    setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * questions.length);
-      questionBox.innerText = questions[randomIndex];
-      questionBox.style.opacity = 1;
-    }, 300);
+    const q = document.getElementById("question");
+    q.innerText = questions[Math.floor(Math.random() * questions.length)];
   }
 
   generateQuestion();
