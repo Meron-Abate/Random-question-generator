@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Question Generator</title>
+
+  <style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("Background.png") no-repeat center center/cover;
+}
+
+    .container {
+      background: rgba(158, 86, 35, 0.35);
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(189, 80, 56, 0.2));
+      animation: fadeIn 1s ease-out;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 32px;
+      font-weight: 600;
+      color: #fff
+    }
+
+    #question {
+      font-size: 26px;
+      margin: 30px 0;
+      font-weight: bold;
+      line-height: 1.4;
+      transition: opacity 0.5s ease;
+      min-height: 100px;
+      color: #fff
+
+    }
+
+    .btn {
+      background: #ffffff;
+      color: #333;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>🎉 13th Anniversary Ice-Breaker 🎉</h2>
+    <div id="question">Loading...</div>
+    <button class="btn" onclick="generateQuestion()">Next Question</button>
+  </div>
+
+<script>
+  const questions = [
+    "What’s one thing most people don’t know about your department?",
+    "What’s the most fun part of your job?",
+    "If your department was an animal, which one would it be and why?",
+    "What is your proudest achievement this year?",
+    "What’s a project you really enjoyed?",
+    "What do you want other departments to understand about your work?",
+    "If you could switch roles with someone for a day, who would it be?",
+    "What motivates you most at work?",
+    "Describe your team in one word.",
+    "What’s one skill you wish everyone had?",
+    "Share a funny or memorable moment from work."
+  ];
+
+  function generateQuestion() {
+    const questionBox = document.getElementById("question");
+    questionBox.style.opacity = 0;
+
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      questionBox.innerText = questions[randomIndex];
+      questionBox.style.opacity = 1;
+    }, 300);
+  }
+
+  generateQuestion();
+</script>
+
+</body>
+</html>
